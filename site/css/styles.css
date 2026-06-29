@@ -1,0 +1,465 @@
+/* ============================================================
+   TrustDriver homepage — translated from Figma "homepage"
+   (file MA1InEujxSwj80XmySI9iT). Fixed 1440px canvas, exact
+   Figma coordinates for pixel-faithful alignment.
+   Fonts: Figma uses "Google Sans" (not on Google Fonts) —
+   Poppins (headings) + Inter (body) are the closest free
+   substitutes loaded from Google Fonts.
+   ============================================================ */
+
+:root {
+  --accent: #1e90ff;       /* primary blue (CTAs, brand) */
+  --ink: #091520;          /* near-black text */
+  --white: #ffffff;
+  --hero-overlay: rgba(9, 21, 32, 0.91);
+  --page-w: 1440px;
+  --font-head: "Google Sans", "Poppins", system-ui, sans-serif;
+  --font-body: "Google Sans", "Inter", system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+p { margin: 0; }
+
+/* Fixed-width canvas centered in the viewport, mirroring the
+   1440px Figma frame. Each <section> is a positioned band whose
+   children are absolutely placed at their exact Figma coords. */
+.page {
+  width: var(--page-w);
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.band {
+  position: relative;
+  width: var(--page-w);
+}
+
+/* Absolutely-positioned helper — children read like Figma layers */
+.abs { position: absolute; }
+
+/* Image placeholders: visible boxes at the exact Figma footprint
+   so layout is correct before real assets drop in. */
+.ph {
+  background:
+    repeating-linear-gradient(45deg, #e9eef3 0 12px, #dfe6ee 12px 24px);
+  border: 1px dashed #b8c4d0;
+  color: #6b7a89;
+  font: 600 12px/1.4 var(--font-body);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 8px;
+}
+.ph--dark {
+  background:
+    repeating-linear-gradient(45deg, #16222f 0 12px, #1b2a39 12px 24px);
+  border-color: #2c3e50;
+  color: #8aa0b4;
+}
+
+/* Buttons ----------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: none;
+  border-radius: 12px;
+  font: 600 15px/1.5 var(--font-head);
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn--primary { background: var(--accent); color: #fff; padding: 12px 20px; }
+.btn--white   { background: #fff; color: var(--ink); padding: 12px 20px; }
+.btn--primary-sm { background: var(--accent); color: #fff; padding: 11px 16px; }
+
+/* ============================================================
+   NAV  (node 1:12)
+   ============================================================ */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  width: var(--page-w);
+  height: 81px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 100px;
+}
+.nav__brand { display: flex; align-items: center; }
+.nav__logo {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--accent);
+  letter-spacing: -0.5px;
+}
+.nav__logo span { color: var(--ink); }
+.nav__links {
+  display: flex;
+  gap: 35px;
+  align-items: center;
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.nav__links a { color: inherit; text-decoration: none; }
+.nav__links a:hover { color: var(--accent); }
+
+/* ============================================================
+   HERO  (node 1:29)  — band height 793, starts under nav
+   ============================================================ */
+.hero { height: 793px; background: #0b1a28; overflow: hidden; }
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  /* Figma fill stack: #091520 @ 91% over Rectangle650 image */
+  background: linear-gradient(var(--hero-overlay), var(--hero-overlay)),
+              url("../images/Rectangle650.png") center / cover no-repeat;
+}
+/* right-side blue angled accent + cut-out people photo */
+.hero__accent {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: var(--accent);
+  clip-path: polygon(65% 0, 100% 0, 100% 100%, 48% 100%);
+}
+.hero__people {
+  position: absolute;
+  left: 459px;   /* right edge lands at the 1440 canvas edge */
+  top: 0;
+  width: 981px;
+  height: 793px;
+  z-index: 1;
+}
+.hero__content {
+  position: absolute;
+  left: 100px;
+  top: 118px;
+  width: 596px;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  z-index: 2;
+}
+.hero__copy { display: flex; flex-direction: column; gap: 20px; color: #fff; }
+.hero h1 {
+  margin: 0;
+  width: 647px;   /* design: heading bleeds past the 596px content column */
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 59px;
+  line-height: 1.08;
+  letter-spacing: -1.18px;
+}
+.hero__sub { 
+  width: 596px;
+  height: 72px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #FFFFFF;
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.hero__cta { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
+.hero__cta .btn--white { width: 316px; }
+.ico { width: 14px; height: 14px; display: inline-block; }
+
+
+/* Shared section heading (the big centered H2s) */
+.h-section {
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 42px;
+  line-height: 1.26;
+  letter-spacing: -1px;
+  color: var(--ink);
+  margin: 0;
+}
+
+/* Check / bullet rows shared across sections */
+.checkrow { display: flex; align-items: center; gap: 16px; font-size: 16px; line-height: 1.5; }
+.checkrow .dot {
+  width: 14px; height: 14px; flex: 0 0 14px;
+  color: var(--accent);
+}
+/* Concentric "target" bullet */
+.dot--ring .dot__o {                              /* Ellipse 145: faint outer ring */
+  fill: none; stroke: var(--accent); stroke-width: 2; opacity: 0.2;
+}
+.dot--ring .dot__i { fill: var(--accent); }       /* Ellipse 144: solid 6px center */
+
+/* ============================================================
+   WHY 3-IN-4 BUYERS  (node 1:51)  — band 1076
+   ============================================================ */
+.s-why { position: relative; height: 1076px; background: #f7f9fb; overflow: hidden; }
+.s-why__stripes {
+  position: absolute; top: 18.5%; right: -24px; width: 276px; height: auto; z-index: 0;
+}
+
+.s-why__h { position: absolute; left: 297px; top: 101px; width: 845px; text-align: center; }
+.s-why__left {
+  position: absolute; left: 100px; top: 308px; width: 533px;
+  display: flex; flex-direction: column; gap: 23px;
+}
+.s-why__lead { font-family: var(--font-head); font-weight: 600; font-size: 28px; line-height: 1.36; color: var(--ink); }
+.s-why__reality {
+  font-family: var(--font-body); font-weight: 600; font-size: 18px; line-height: 1.5;
+  color: var(--accent);
+}
+
+.s-why__list { display: flex; flex-direction: column; }
+.s-why__list .checkrow { padding: 0 0 6px; }
+.s-why__list .divider { height: 1px; background: #e4e9ee; margin: 0 0 6px; }
+.s-why__note b { font-weight: 600; font-size: 16px; }
+.s-why__note p { margin-top: 9px; font-size: 16px; line-height: 1.5; color: #4b5a68; }
+.s-why__btn { align-self: flex-start; }
+
+.s-why__card {
+  position: absolute; left: 884px; top: 300px; width: 312px; z-index: 2;
+  background: #fff; border-radius: 14px; padding: 48px 36px 44px;
+  box-shadow: 0 24px 60px rgba(20, 40, 80, .14);
+  text-align: center;
+}
+.ring { position: relative; width: 174px; height: 174px; margin: 0 auto; }
+.ring svg { transform: rotate(-90deg); }
+.ring__num {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-head); font-weight: 600; font-size: 44px; line-height: 1.2;
+  letter-spacing: -0.02em; color: var(--ink);
+}
+.s-why__card p { margin-top: 30px; font-weight: 500; font-size: 16px; line-height: 1.5; color: var(--ink); }
+.s-why__car {
+  position: absolute; left: 690px; top: 635px; width: 643px; height: 345px; z-index: 1;
+}
+
+/* check-fill rows (24px icon) shared by benchmark / pilot lists */
+.featrow { display: flex; align-items: center; gap: 6px; font-size: 16px; line-height: 1.5; color: var(--ink); }
+.featrow .chk { width: 24px; height: 24px; flex: 0 0 24px; color: var(--accent); }
+.featrow img.chk { width: 18px; height: 18px; flex: 0 0 18px; }
+
+/* ============================================================
+   HOW DOES YOUR DEALERSHIP COMPARE  (node 1:112) — band 733
+   ============================================================ */
+.s-cmp { height: 733px; background: #fff; }
+.s-cmp__card {
+  position: absolute; left: 183px; top: 106px; width: 368px; height: 654px;
+  background: #fff;
+  border: 12px solid var(--ink);          /* Figma stroke #091520, inside */
+  border-radius: 42px 42px 10px 10px;      /* TL TR BR BL — Figma 42/42/10/10 */
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; color: #b8c4d0; font: 600 13px var(--font-body);
+}
+.s-cmp__right { position: absolute; left: 687px; top: 123px; width: 594px; }
+.s-cmp__right .h-section { width: 594px; }
+.s-cmp__p { margin-top: 12px; font-size: 16px; line-height: 1.5; color: #4b5a68; }
+.s-cmp__incl { margin-top: 32px; font-family: var(--font-head); font-weight: 600; font-size: 16px; color: var(--ink); }
+.s-cmp__list { margin-top: 9px; display: flex; flex-direction: column; gap: 7px; }
+.s-cmp__btn { margin-top: 32px; width: 315px; }
+
+/* ============================================================
+   EXPERIENCE DIFFERENTIATOR  (node 1:143) — band 1125
+   ============================================================ */
+.s-diff { height: 1125px; background: #fff; }
+.s-diff__h { position: absolute; left: 282px; top: 120px; width: 875px; text-align: center; }
+.s-diff__rows {
+  position: absolute; left: 131px; top: 276px; width: 1178px;
+  display: flex; flex-direction: column; align-items: center; gap: 14px;
+}
+.s-diff__rows .line { display: flex; justify-content: center; gap: 14px; }
+.s-diff__rows .featrow { background: #f4f8fc; border-radius: 10px; padding: 10px 14px; gap: 10px; }
+.s-diff__quote {
+  position: absolute; left: 226px; top: 602px; width: 987px; height: 132px;
+  background: var(--accent); border-radius: 16px; color: #fff;
+  display: flex; align-items: center; padding: 0 44px; gap: 80px;
+}
+.s-diff__quote p:first-child { font-family: var(--font-head); font-weight: 600; font-size: 22px; line-height: 1.3; width: 417px; }
+.s-diff__quote p:last-child { font-size: 18px; line-height: 1.5; width: 345px; }
+.s-diff__car { position: absolute; left: 262px; top: 784px; width: 916px; height: 289px; }
+
+/* ============================================================
+   BUILT AROUND HOW CUSTOMERS BUY — 4 stages (node 1:198) — 689
+   ============================================================ */
+.s-stages { height: 689px; background: #fff; }
+.s-stages__head { position: absolute; left: 100px; top: 120px; width: 1240px; text-align: center; }
+.s-stages__head .h-section { width: 1240px; }
+.s-stages__sub1 { margin: 24px auto 0; width: 634px; font-size: 16px; line-height: 1.5; color: #4b5a68; }
+.s-stages__sub2 { margin: 20px auto 0; width: 1240px; font-size: 18px; line-height: 1.6; color: var(--ink); }
+.s-stages__row { position: absolute; left: 100px; top: 383px; width: 1240px; height: 186px; display: flex; }
+.stage {
+  width: 331px; height: 186px; margin-left: -28px;
+  background: #eef4fb;
+  clip-path: polygon(0 0, calc(100% - 28px) 0, 100% 50%, calc(100% - 28px) 100%, 0 100%, 28px 50%);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px;
+}
+.stage:first-child { margin-left: 0; }
+.stage:nth-child(2) { background: #e3eefb; }
+.stage:nth-child(3) { background: #d7e7fa; }
+.stage:nth-child(4) { background: #cbe0f9; }
+.stage__icon {
+  width: 51px; height: 51px; border-radius: 50%;
+  background: var(--accent); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+}
+.stage__icon svg { width: 20px; height: 20px; }
+.stage__label { font-family: var(--font-head); font-weight: 600; font-size: 20px; color: var(--ink); }
+
+/* ============================================================
+   REPEATABLE BEHAVIOURS — dark CTA band (node 1:232) — 535
+   ============================================================ */
+.s-repeat {
+  height: 535px; background: var(--accent); overflow: hidden;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 24px; text-align: center;
+}
+.s-repeat__bg {
+  position: absolute; left: 0; top: -23px; width: 1440px; height: 582px;
+  background: radial-gradient(120% 140% at 80% 20%, #38a0ff 0%, #1e90ff 55%, #1577d8 100%);
+}
+.s-repeat__h { position: relative; width: 1030px; color: #fff; margin: 0; }
+.s-repeat__p { position: relative; width: 926px; color: #e7f1fd; font-size: 16px; line-height: 1.5; }
+.s-repeat__btn { position: relative; color: var(--accent); }
+
+/* ============================================================
+   CX INTELLIGENCE — feature grid (node 1:238) — 863
+   ============================================================ */
+.s-feat { height: 863px; background: #fff; }
+.s-feat__head { position: absolute; left: 374px; top: 120px; width: 691px; text-align: center; }
+.s-feat__head .h-section { width: 691px; }
+.s-feat__p { margin-top: 19px; font-size: 16px; line-height: 1.5; color: #4b5a68; }
+.s-feat__grid {
+  position: absolute; left: 100px; top: 353px; width: 1240px;
+  display: grid; grid-template-columns: repeat(4, 295px); gap: 20px;
+}
+.ftile {
+  height: 185px; border: 1px solid #e7edf3; border-radius: 16px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 30px;
+}
+.ftile__icon {
+  width: 48px; height: 48px; border-radius: 12px;
+  background: #eaf3fd; color: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+}
+.ftile__icon svg { width: 24px; height: 24px; }
+.ftile__label { font-family: var(--font-head); font-weight: 600; font-size: 18px; color: var(--ink); }
+
+/* ============================================================
+   YOUR CRM STAYS — integrations orbit (node 1:294) — 780
+   ============================================================ */
+.s-crm { height: 780px; background: #fff; }
+.s-crm__left { position: absolute; left: 100px; top: 216px; width: 581px; }
+.s-crm__left h2 { width: 483px; margin: 0; font-family: var(--font-head); font-weight: 600; font-size: 42px; line-height: 1.26; letter-spacing: -1px; color: var(--ink); }
+.s-crm__left p { margin-top: 20px; font-size: 18px; line-height: 1.5; color: #4b5a68; width: 519px; }
+.s-crm__orbit { position: absolute; left: 746px; top: 115px; width: 594px; height: 550px; }
+.s-crm__rings { position: absolute; left: 51px; top: 32px; width: 486px; height: 486px; }
+.s-crm__rings i { position: absolute; border: 1px solid #e2e9f0; border-radius: 50%; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+.s-crm__rings i:nth-child(1) { width: 486px; height: 486px; }
+.s-crm__rings i:nth-child(2) { width: 340px; height: 340px; }
+.s-crm__rings i:nth-child(3) { width: 200px; height: 200px; background: #eaf3fd; }
+.chip {
+  position: absolute; width: 173px; height: 76px; border-radius: 16px;
+  background: #fff; box-shadow: 0 8px 24px rgba(9,21,32,0.10);
+  display: flex; align-items: center; justify-content: center;
+}
+.chip .ph { width: 130px; height: 44px; }
+.chip.c1 { left: 211px; top: 0; }
+.chip.c2 { left: 421px; top: 135px; }
+.chip.c3 { left: 421px; top: 339px; }
+.chip.c4 { left: 211px; top: 474px; }
+.chip.c5 { left: 0; top: 339px; }
+.chip.c6 { left: 0; top: 135px; }
+
+/* ============================================================
+   SEE TRUSTDRIVER IN ACTION — video (node 1:327) — 1051
+   ============================================================ */
+.s-video { height: 1051px; background: #fff; }
+.s-video__head { position: absolute; left: 386px; top: 120px; width: 668px; text-align: center; }
+.s-video__head h2 { margin: 0; font-family: var(--font-head); font-weight: 600; font-size: 42px; line-height: 1.2; letter-spacing: -1px; color: var(--ink); }
+.s-video__head p { margin-top: 25px; font-size: 16px; line-height: 1.5; color: #4b5a68; }
+.s-video__frame {
+  position: absolute; left: 100px; top: 297px; width: 1240px; height: 634px;
+  border-radius: 20px; display: flex; align-items: center; justify-content: center;
+}
+.s-video__play {
+  width: 90px; height: 90px; border-radius: 50%;
+  background: rgba(255,255,255,0.9); color: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+}
+.s-video__play svg { width: 40px; height: 40px; margin-left: 5px; }
+
+/* ============================================================
+   EXPERIENCE IN YOUR DEALERSHIP — pilot (node 1:335) — 735
+   ============================================================ */
+.s-pilot { height: 735px; background: #fff; }
+.s-pilot__blob {
+  position: absolute; right: -126px; top: 55px; width: 574px; height: 571px;
+  background: radial-gradient(circle at 40% 40%, #eaf3fd, #d7e8fb);
+  border-radius: 48% 52% 44% 56% / 52% 44% 56% 48%;
+}
+.s-pilot__left { position: absolute; left: 100px; top: 209px; width: 422px; }
+.s-pilot__left h2 { width: 422px; margin: 0; font-family: var(--font-head); font-weight: 600; font-size: 42px; line-height: 1.2; letter-spacing: -1px; color: var(--ink); }
+.s-pilot__left p { margin-top: 31px; font-size: 16px; line-height: 1.5; color: #4b5a68; }
+.s-pilot__btn { margin-top: 31px; }
+.s-pilot__cards { position: absolute; left: 784px; top: 101px; width: 556px; height: 533px; }
+.pcol { position: absolute; width: 268px; display: flex; flex-direction: column; gap: 20px; }
+.pcol.left { left: 0; top: 0; }
+.pcol.right { left: 288px; top: 40px; }
+.pcard {
+  height: 151px; border: 1px solid #e7edf3; border-radius: 16px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px;
+}
+.pcard__icon { width: 40px; height: 40px; border-radius: 10px; background: #eaf3fd; color: var(--accent); display: flex; align-items: center; justify-content: center; }
+.pcard__icon svg { width: 24px; height: 24px; }
+.pcard__label { font-family: var(--font-head); font-weight: 600; font-size: 18px; color: var(--ink); }
+
+/* ============================================================
+   CTA band (symbol 1:378) — 529  [approximated]
+   ============================================================ */
+.s-cta { height: 529px; background: var(--accent); color: #fff; overflow: hidden; }
+.s-cta__bg { position: absolute; inset: 0; background: radial-gradient(120% 140% at 85% 15%, #38a0ff 0%, #1e90ff 55%, #1577d8 100%); }
+.s-cta__left { position: absolute; left: 100px; top: 120px; width: 620px; }
+.s-cta__left h2 { margin: 0; width: 560px; font-family: var(--font-head); font-weight: 600; font-size: 44px; line-height: 1.18; letter-spacing: -1px; }
+.s-cta__left p { margin-top: 20px; width: 540px; font-size: 18px; line-height: 1.5; color: #e7f1fd; }
+.s-cta__btns { margin-top: 32px; display: flex; gap: 16px; }
+.s-cta .btn--white { color: var(--accent); }
+.s-cta .btn--ghost { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.7); padding: 12px 20px; }
+.s-cta__car { position: absolute; left: 720px; top: 150px; width: 640px; height: 300px; }
+
+/* ============================================================
+   FOOTER (symbol 1:400) — 541  [approximated]
+   ============================================================ */
+.s-footer { min-height: 541px; background: #091520; color: #c4d0db; padding: 80px 100px 40px; }
+.foot__top { display: flex; justify-content: space-between; gap: 60px; }
+.foot__brand { width: 320px; }
+.foot__brand .nav__logo { color: #fff; }
+.foot__brand .nav__logo span { color: var(--accent); }
+.foot__brand p { margin-top: 18px; font-size: 15px; line-height: 1.6; color: #8aa0b4; }
+.foot__cols { display: flex; gap: 70px; }
+.foot__col h4 { margin: 0 0 16px; font-family: var(--font-head); font-size: 15px; color: #fff; }
+.foot__col a { display: block; margin-bottom: 12px; font-size: 14px; color: #8aa0b4; text-decoration: none; }
+.foot__col a:hover { color: #fff; }
+.foot__bar { margin-top: 60px; padding-top: 24px; border-top: 1px solid #1d2c3a; font-size: 13px; color: #6f8398; }
