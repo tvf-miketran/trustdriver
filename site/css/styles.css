@@ -138,10 +138,23 @@ p { margin: 0; }
 /* right-side blue angled accent + cut-out people photo */
 .hero__accent {
   position: absolute;
-  inset: 0;
+  left: 738px;          /* Figma Vector 12 */
+  top: 98.5px;
+  width: 708.56px;
+  height: 694.76px;
   z-index: 1;
   background: var(--accent);
-  clip-path: polygon(65% 0, 100% 0, 100% 100%, 48% 100%);
+  /* 5-pt shape: flat top, full right, bottom edge, left point */
+  clip-path: polygon(36% 0, 100% 0, 100% 100%, 18% 100%, 0 65%);
+}
+/* Union 2 — white stripe artwork, clipped to the polygon by the parent */
+.hero__stripe {
+  position: absolute;
+  left: 409px;       /* derived from Figma rotated-box bounds */
+  top: 61px;
+  width: 276px;
+  height: 663px;
+  opacity: 0.2;
 }
 .hero__people {
   position: absolute;
