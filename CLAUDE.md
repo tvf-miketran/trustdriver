@@ -5,7 +5,14 @@ The **TrustDriver** marketing website — a Customer Experience Intelligence pro
 automotive dealerships. Built as **plain HTML5 + CSS**, translated from the Figma design.
 
 - **Stack:** plain HTML5 + CSS. Vanilla JS only where interaction requires it.
-- **No build step. No framework. No CMS** — pages are hand-authored static files.
+- **No framework. No CMS.** One tiny build step for shared chrome (below).
+- **Shared header/footer:** the single source is `site/partials/header.html` + `site/partials/footer.html`.
+  Pages mark insertion points with `<!-- @include:header -->…<!-- @endinclude:header -->`
+  (same for footer). Run `cd site && node _build/gen.mjs` to stamp the partials INLINE into
+  every page. Inline = the nav/footer links stay in the crawled HTML (SEO-safe; no runtime JS).
+  Edit a partial → re-run gen. Do NOT hand-edit the region between the markers.
+  (Partials use root-relative paths; when `pages/` subpages are added, extend gen.mjs to rewrite
+  `images/`→`../images/` for that folder.)
 - **Source of truth:** the Figma design. Pull exact values (colors, spacing, type) — don't eyeball.
 - Output lives in `site/` (`site/index.html`, `site/css/styles.css`, `site/images/`).
   Serve with `cd site && python -m http.server 8000`.

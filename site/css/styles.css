@@ -482,14 +482,21 @@ p { margin: 0; }
 /* ============================================================
    FOOTER (symbol 1:400) — 541  [approximated]
    ============================================================ */
-.s-footer { min-height: 541px; background: #091520; color: #c4d0db; padding: 80px 100px 40px; }
+/* Light footer (design node 33:1120) */
+.s-footer { background: #fff; color: #6b7688; padding: 64px 100px 40px; }
 .foot__top { display: flex; justify-content: space-between; gap: 60px; }
-.foot__brand { width: 320px; }
-.foot__brand .nav__logo { color: #fff; }
-.foot__brand .nav__logo span { color: var(--accent); }
-.foot__brand p { margin-top: 18px; font-size: 15px; line-height: 1.6; color: #8aa0b4; }
-.foot__cols { display: flex; gap: 70px; }
-.foot__col h4 { margin: 0 0 16px; font-family: var(--font-head); font-size: 15px; color: #fff; }
-.foot__col a { display: block; margin-bottom: 12px; font-size: 14px; color: #8aa0b4; text-decoration: none; }
-.foot__col a:hover { color: #fff; }
-.foot__bar { margin-top: 60px; padding-top: 24px; border-top: 1px solid #1d2c3a; font-size: 13px; color: #6f8398; }
+.foot__brand { width: 440px; }
+.foot__logo { height: 28px; width: auto; display: block; }
+.foot__brand p { margin-top: 20px; font-size: 15px; line-height: 1.7; color: #4b5a68; }
+.foot__social { margin-top: 22px; display: flex; gap: 16px; }
+.foot__social a { display: inline-flex; }
+.foot__social img { width: 18px; height: 18px; display: block; }
+.foot__cols { display: flex; gap: 90px; }
+.foot__col h4 { margin: 0 0 22px; font-family: var(--font-head); font-weight: 600; font-size: 18px; color: var(--ink); }
+.foot__col a { display: block; margin-bottom: 16px; font-size: 15px; color: #6b7688; text-decoration: none; }
+.foot__col a:hover { color: var(--accent); }
+.foot__contact { display: flex; flex-direction: column; gap: 18px; }
+.foot__contact .row { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; color: #4b5a68; text-decoration: none; }
+.foot__contact .row svg { width: 18px; height: 18px; flex: 0 0 18px; margin-top: 2px; color: var(--ink); }
+.foot__bar { margin-top: 48px; padding-top: 24px; border-top: 1px solid #e7edf3; display: flex; justify-content: space-between; font-size: 14px; color: #6b7688; }
+.foot__bar a { color: inherit; text-decoration: underline; }
